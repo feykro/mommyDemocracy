@@ -10,6 +10,8 @@ class VsWidget extends ViewModelWidget<VsScreenViewModel> {
     return vsWidgetBody(context, viewModel);
   }
 
+  //  TODO: fix flex factors
+  //  TODO: add mommy names
   Widget vsWidgetBody(BuildContext context, VsScreenViewModel model) {
     return Expanded(
       flex: 66,
@@ -29,10 +31,12 @@ class VsWidget extends ViewModelWidget<VsScreenViewModel> {
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: model.mommies == null
-                            ? Image.asset('assets/images/makima.png')
+                        child: model.mommy1 == null
+                            ? Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [Image.asset('assets/images/makima.png'), CircularProgressIndicator()])
                             : Image(
-                                image: Image.network(model.mommies!.first.data['pictureUrl']).image,
+                                image: Image.network(model.mommy1!.pictureUrl).image,
                                 fit: BoxFit.cover,
                               ),
                       ),
@@ -41,10 +45,12 @@ class VsWidget extends ViewModelWidget<VsScreenViewModel> {
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: model.mommies == null
-                            ? Image.asset('assets/images/makima.png')
+                        child: model.mommy2 == null // TODO: handle request fail case maybe ?
+                            ? Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [Image.asset('assets/images/makima.png'), CircularProgressIndicator()])
                             : Image(
-                                image: Image.network(model.mommies![1].data['pictureUrl']).image,
+                                image: Image.network(model.mommy2!.pictureUrl).image,
                                 fit: BoxFit.cover,
                               ),
                       ),

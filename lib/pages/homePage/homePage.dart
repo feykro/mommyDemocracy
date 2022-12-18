@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
         viewModelBuilder: () => VsScreenViewModel(),
         onModelReady: (viewModel) {
           viewModel.initMommies(); // Fetch waifus
+          viewModel.initCurrentBattle(); // Fetch battle
         },
         builder: (context, viewModel, child) {
           return Scaffold(
@@ -53,99 +54,5 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         });
-    /*
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(color: Colors.blue),
-        child: Column(
-          children: [
-            //  top buttons and title section
-            Expanded(
-              flex: 10,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Icon(Icons.account_circle_rounded),
-                  Text(
-                    "Waifu war",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Icon(Icons.settings)
-                ],
-              ),
-            ),
-            // center waifu VS and meter widget
-            Expanded(
-              flex: 66,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                    flex: 9,
-                    child: Stack(
-                      fit: StackFit.passthrough,
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset('assets/images/makima.png'),
-                              ),
-                              /*Image(
-                                image: Image.network(mommies.first.data['pictureUrl']).image,
-                                fit: BoxFit.cover,
-                              ),*/
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset('assets/images/makima.png'),
-                              ),
-                              /*Image(
-                                image: Image.network(mommies[1].data['pictureUrl']).image,
-                                fit: BoxFit.cover,
-                              ),*/
-                            ),
-                          ],
-                        ),
-                        Container(alignment: Alignment.center, child: const Text("VS")),
-                      ],
-                    ),
-                  ),
-                  const Expanded(
-                    flex: 1,
-                    child: RotatedBox(
-                      quarterTurns: -1,
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 8, 8, 25),
-                        child: LinearProgressIndicator(
-                          value: 0.3,
-                          valueColor: AlwaysStoppedAnimation(Colors.orange),
-                          backgroundColor: Colors.amberAccent,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            //  bottom row
-            Expanded(
-              flex: 15,
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: const [
-                Icon(Icons.account_tree_rounded),
-                Text("Insert ad"),
-              ]),
-            ),
-          ],
-        ),
-      ),
-    );
-     */
   }
 }
